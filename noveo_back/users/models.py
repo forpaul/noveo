@@ -9,7 +9,7 @@ class User(models.Model):
     last_name = models.CharField(max_length=100)
     state = models.ForeignKey('State', null=True, on_delete=models.SET_NULL)
     date = models.DateField(default=datetime.date.today)
-    groups = models.ForeignKey('Group', null=True, on_delete=models.SET_NULL)
+    group = models.ForeignKey('Group', null=True, on_delete=models.SET_NULL)
 
 class State(models.Model):
     id = models.AutoField(primary_key=True)

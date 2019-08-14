@@ -9,7 +9,7 @@ class UserViewSet(viewsets.ModelViewSet):
     model = User
 
     def get_queryset(self):
-        return self.model.objects.prefetch_related('groups').all()
+        return self.model.objects.select_related('group', 'state').all()
 
 
 class StateViewSet(viewsets.ModelViewSet):

@@ -15,7 +15,7 @@
             <td class="text-xs-left">{{ props.item.email }}</td>
             <td class="text-xs-left">{{ props.item.first_name }}</td>
             <td class="text-xs-left">{{ props.item.last_name }}</td>
-            <td class="text-xs-left">{{ props.item.groups }}</td>
+            <td class="text-xs-left">{{ props.item.group }}</td>
             <td class="text-xs-left">{{ props.item.state }}</td>
             <td class="text-xs-left">{{ props.item.date }}</td>
             <td><v-btn @click.stop @click="deleteUser(props.item.id)" icon><v-icon medium>delete</v-icon></v-btn></td>
@@ -76,7 +76,7 @@
             <div class="users-form--fields">
               <v-autocomplete
                 :items="groups"
-                v-model="modal.item.groups"
+                v-model="modal.item.group"
                 item-text="name"
                 item-value="id"
                 label="Group"
@@ -115,7 +115,7 @@ export default {
         email: '',
         first_name: '',
         last_name: '',
-        groups: [],
+        group: [],
         state: null
       },
       users: [],
@@ -127,7 +127,7 @@ export default {
         { text: 'Email', align: 'left', value: 'email', sortable: false},
         { text: 'First name', value: 'first_name', sortable: false },
         { text: 'Last name', value: 'last_name', sortable: false },
-        { text: 'Groups', value: 'groups', sortable: false },
+        { text: 'Group', value: 'group', sortable: false },
         { text: 'State', value: 'state', sortable: false },
         { text: 'Date', value: 'date', sortable: false },
         { sortable: false },
@@ -190,7 +190,7 @@ export default {
             first_name: user.first_name,
             last_name: user.last_name,
             date: user.date,
-            groups: user.groups ? this.groups.find(group => group.id === user.groups).name : '',
+            group: user.group ? this.groups.find(group => group.id === user.group).name : '',
             state: user.state ? this.states.find(state => state.id === user.state).name : '',
           })
         })
