@@ -47,6 +47,7 @@
                 label="Password"
                 v-model="modal.item.password"
                 name="password"
+                type="password"
                 v-validate="'required'"
                 :error="(FormErrors.first('password') && submitted ? true : false)"
                 :error-messages="submitted ? FormErrors.collect('password') : ''"
@@ -79,7 +80,6 @@
                 item-text="name"
                 item-value="id"
                 label="Group"
-                multiple
               />
             </div>
             <div class="users-form--fields">
@@ -190,9 +190,7 @@ export default {
             first_name: user.first_name,
             last_name: user.last_name,
             date: user.date,
-            groups: user.groups.map(group => {
-              return this.groups.find(g => group === g.id).name
-            }),
+            groups: user.groups ? this.groups.find(group => group.id === user.groups).name : '',
             state: user.state ? this.states.find(state => state.id === user.state).name : '',
           })
         })
